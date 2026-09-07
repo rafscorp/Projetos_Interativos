@@ -210,3 +210,59 @@ body {
   max-height: 560px;
   overflow: auto;
 }
+
+/* ================== MOBILE ================== */
+@media (max-width: 768px) {
+  .topbar { padding: 0.75rem 1rem; }
+  .logo { font-size: 0.82rem; }
+  .logo .dim { display: none; } /* "/ projetos interativos" some, o titulo da aba ja diz isso */
+  .topbar-link { font-size: 0.8rem; }
+
+  /* sidebar vira uma faixa horizontal rolavel em vez de coluna fixa -
+     numa tela estreita, uma coluna de 240px sozinha ja tomava quase
+     metade do espaco util, sobrando quase nada pro conteudo de verdade */
+  .app-body { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding: 0.75rem 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sidebar-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .sidebar-group-label { padding: 0; margin-bottom: 0; }
+  .sidebar-item {
+    width: auto;
+    white-space: nowrap;
+    padding: 0.45rem 0.8rem;
+    margin-bottom: 0;
+  }
+
+  .main-panel { padding: 1rem 1rem 1.5rem; }
+
+  .project-header { flex-direction: column; }
+  .project-header h2 { font-size: 1.2rem; }
+  .project-badges { flex-wrap: wrap; }
+
+  .view-tabs button { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
+
+  .run-toolbar { flex-wrap: wrap; gap: 0.6rem; }
+  .btn-run { width: 100%; text-align: center; }
+  .hint { font-size: 0.78rem; }
+
+  .terminal-container { height: 380px; padding: 6px; }
+
+  .code-tab { font-size: 0.72rem; padding: 0.45rem 0.6rem; }
+  .code-scroll { max-height: 420px; }
+}
