@@ -3,13 +3,22 @@ import Terminal from './components/Terminal'
 import CodeViewer from './components/CodeViewer'
 import { useWasmProgram } from './engines/useWasmProgram'
 import { usePyodideProgram } from './engines/usePyodideProgram'
+import { useCheerpjProgram } from './engines/useCheerpjProgram'
 import { projects } from './data/projects'
 import './App.css'
 
 const LINGUAGENS = ['C', 'Python', 'Java']
 
+function RunButtonLabel({ status }) {
+  if (status === 'loading') return 'Carregando...'
+  if (status === 'running') return 'Rodando...'
+  if (status === 'idle') return 'Rodar'
+  return 'Rodar de novo'
+}
+
 function ProjectRunner({ project }) {
   const terminalRef = useRef(null)
+  const displayRef = useRef(null)
   const [view, setView] = useState('run') // 'run' | 'code'
 
   const wasmProgram = useWasmProgram({
@@ -22,8 +31,17 @@ function ProjectRunner({ project }) {
     entryModule: project.entryModule,
     terminalRef,
   })
+  const cheerpjProgram = useCheerpjProgram({
+    jarPath: project.jarPath,
+    displayRef,
+    isConsoleApp: project.isConsoleApp,
+  })
 
-  const engine = project.tipo === 'wasm' ? wasmProgram : project.tipo === 'pyodide' ? pyodideProgram : null
+  const engine =
+    project.tipo === 'wasm' ? wasmProgram : project.tipo === 'pyodide' ? pyodideProgram : project.tipo === 'cheerpj' ? cheerpjProgram : null
+
+  const usaTerminal = project.tipo === 'wasm' || project.tipo === 'pyodide'
+  const usaCheerpj = project.tipo === 'cheerpj'
 
   return (
     <div className="project-runner">
@@ -49,29 +67,45 @@ function ProjectRunner({ project }) {
         </div>
       )}
 
-      {(!engine || view === 'run') && engine && (
+      {engine && view === 'run' && (
         <div className="run-panel">
           <div className="run-toolbar">
             <button className="btn-run" onClick={engine.run} disabled={engine.status === 'loading' || engine.status === 'running'}>
-              {engine.status === 'loading'
-                ? 'Carregando...'
-                : engine.status === 'running'
-                  ? 'Rodando...'
-                  : engine.status === 'idle'
-                    ? 'Rodar'
-                    : 'Rodar de novo'}
+              <RunButtonLabel status={engine.status} />
             </button>
             {project.tipo === 'pyodide' && engine.status === 'idle' && (
               <span className="hint">primeira execução pode demorar alguns segundos (carrega o Python)</span>
             )}
+            {usaCheerpj && (engine.status === 'idle' || engine.status === 'loading') && (
+              <span className="hint">primeira execução pode demorar (carrega uma JVM completa via WebAssembly)</span>
+            )}
           </div>
-          <Terminal ref={terminalRef} />
-        </div>
-      )}
 
-      {(!engine && project.tipo === 'codigo') && (
-        <div className="no-run-notice">
-          ⚠️ {project.motivoSemExecucao}
+          {usaTerminal && <Terminal ref={terminalRef} />}
+
+          {usaCheerpj && !project.isConsoleApp && <div ref={displayRef} className="cheerpj-display" />}
+
+          {usaCheerpj && project.isConsoleApp && (
+            <div className="cheerpj-console">
+              <pre className="cheerpj-console-log">
+                {cheerpjProgram.consoleLines.join('\n') || (engine.status === 'running' ? 'aguardando saída do programa...' : '')}
+              </pre>
+              {engine.status === 'running' && (
+                <p className="cheerpj-console-note">
+                  ⚠️ Esse programa usa <code>Scanner</code> pra menu interativo — a saída acima é real (rodando de verdade
+                  numa JVM no navegador), mas ainda não consegui conectar a entrada de teclado nessa versão web pra esse
+                  app específico de console. A Calculadora (Swing) já é 100% interativa; pra ver esse aqui funcionando
+                  com entrada, dá pra compilar e rodar localmente (instruções no código-fonte).
+                </p>
+              )}
+            </div>
+          )}
+
+          {usaCheerpj && (
+            <p className="cheerpj-credit">
+              rodando com <a href="https://cheerpj.com" target="_blank" rel="noopener">CheerpJ</a> — JVM completa compilada pra WebAssembly
+            </p>
+          )}
         </div>
       )}
 

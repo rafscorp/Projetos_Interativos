@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# pasta de trabalho local pra compilar os .jar (so os .jar finais em
+# public/java/ vao pro repositorio, ja compilados)
+java-build/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

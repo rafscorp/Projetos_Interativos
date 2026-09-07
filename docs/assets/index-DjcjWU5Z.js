@@ -41,7 +41,7 @@ importlib.reload(mod)
 await mod.main()
 `),i(`finished`),r.write(`\r
 \x1B[2m[programa encerrado - clique em "Rodar de novo" pra reiniciar]\x1B[0m\r
-`)}catch(e){console.error(e),i(`error`),o(e.message||String(e)),r.write(`\r\n\x1b[31mErro ao rodar o programa: ${e.message||e}\x1b[0m\r\n`)}}},[e,t,n]),status:r,errorMsg:a}}var ru=`"""
+`)}catch(e){console.error(e),i(`error`),o(e.message||String(e)),r.write(`\r\n\x1b[31mErro ao rodar o programa: ${e.message||e}\x1b[0m\r\n`)}}},[e,t,n]),status:r,errorMsg:a}}var ru=`https://cjrtnc.leaningtech.com/4.3/loader.js`,iu=null;function au(){return iu||(iu=new Promise((e,t)=>{let n=document.createElement(`script`);n.src=ru,n.onload=()=>{window.cheerpjInit().then(e).catch(t)},n.onerror=()=>t(Error(`Falha ao carregar o runtime do CheerpJ`)),document.body.appendChild(n)}),iu)}function ou({jarPath:e,displayRef:t,isConsoleApp:n}){let[r,i]=(0,v.useState)(`idle`),[a,o]=(0,v.useState)(null),[s,c]=(0,v.useState)([]),l=(0,v.useRef)(!1);return{run:(0,v.useCallback)(async()=>{let r=t.current;if(!l.current){i(`loading`),o(null),c([]);try{if(await au(),n){let e=console.log.bind(console);console.log=(...t)=>{e(...t),c(e=>[...e,t.map(String).join(` `)])}}else r&&(r.innerHTML=``,window.cheerpjCreateDisplay(-1,-1,r));i(`running`),l.current=!0;let t=`/app/Projetos_Interativos/${e}`;await window.cheerpjRunJar(t)}catch(e){console.error(e),i(`error`),o(e.message||String(e))}}},[e,t,n]),status:r,errorMsg:a,consoleLines:s}}var su=`"""
 Classe Biblioteca: e o "cerebro" do sistema.
 
 Separei isso do modelos.py de proposito: modelos.py so tem as entidades
@@ -208,7 +208,7 @@ class Biblioteca:
         biblioteca.proximo_id_membro = dados.get("proximo_id_membro", 1)
         biblioteca.proximo_id_emprestimo = dados.get("proximo_id_emprestimo", 1)
         return biblioteca
-`,iu=`"""
+`,cu=`"""
 Sistema de Biblioteca - ponto de entrada.
 
 Aqui so tem a interface de terminal (menu, input, print). Toda a regra de
@@ -467,7 +467,7 @@ async def main() -> None:
 # aqui so definimos a funcao, sem disparar automaticamente no import.
 # if __name__ == "__main__":
 #     main()
-`,au=`"""
+`,lu=`"""
 Modelos do sistema de biblioteca.
 
 Aqui ficam so as "entidades" (Livro, Membro, Emprestimo) com seus dados e
@@ -530,7 +530,7 @@ class Emprestimo:
 
     def esta_atrasado(self) -> bool:
         return self.calcular_dias_atraso() > 0
-`,ou=`"""
+`,uu=`"""
 Gerenciador de Tarefas CLI
 --------------------------
 Programa de linha de comando pra organizar tarefas do dia a dia.
@@ -814,7 +814,7 @@ async def main() -> None:
 # aqui so definimos a funcao, sem disparar automaticamente no import.
 # if __name__ == "__main__":
 #     main()
-`,su=`#include <stdio.h>\r
+`,du=`#include <stdio.h>\r
 #include <stdlib.h>\r
 #include <unistd.h>\r
 \r
@@ -969,7 +969,7 @@ int main()   //codigo principal\r
     sleep(1);\r
     DinheiroFloat();\r
     return 0;\r
-}`,cu=`#include <stdio.h>\r
+}`,fu=`#include <stdio.h>\r
 #include <time.h>\r
 #include <errno.h>\r
 #include <stddef.h>\r
@@ -1890,7 +1890,7 @@ int main(void)\r
         }\r
     }\r
     return 0;\r
-}`,lu=`#include <string.h>\r
+}`,pu=`#include <string.h>\r
 #include <stdlib.h>\r
 #include <unistd.h>\r
 #include <stdbool.h>\r
@@ -2522,7 +2522,7 @@ int main()\r
     free(clientes);\r
     return 0;\r
 }\r
-`,uu=`"""
+`,mu=`"""
 Gerenciador de Tarefas CLI
 --------------------------
 Programa de linha de comando pra organizar tarefas do dia a dia.
@@ -2785,7 +2785,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-`,du=`"""
+`,hu=`"""
 Sistema de Biblioteca - ponto de entrada.
 
 Aqui so tem a interface de terminal (menu, input, print). Toda a regra de
@@ -3023,7 +3023,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-`,fu=`"""
+`,gu=`"""
 Classe Biblioteca: e o "cerebro" do sistema.
 
 Separei isso do modelos.py de proposito: modelos.py so tem as entidades
@@ -3190,7 +3190,7 @@ class Biblioteca:
         biblioteca.proximo_id_membro = dados.get("proximo_id_membro", 1)
         biblioteca.proximo_id_emprestimo = dados.get("proximo_id_emprestimo", 1)
         return biblioteca
-`,pu=`"""
+`,_u=`"""
 Modelos do sistema de biblioteca.
 
 Aqui ficam so as "entidades" (Livro, Membro, Emprestimo) com seus dados e
@@ -3253,7 +3253,7 @@ class Emprestimo:
 
     def esta_atrasado(self) -> bool:
         return self.calcular_dias_atraso() > 0
-`,mu=`import javax.swing.*;
+`,vu=`import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -3427,7 +3427,7 @@ public class Calculadora extends JFrame implements ActionListener {
         });
     }
 }
-`,hu=`import java.util.Locale;
+`,yu=`import java.util.Locale;
 
 //classe que representa um produto do estoque - guarda todos os dados juntos (id, nome,
 //categoria, quantidade...) numa coisa só, em vez de ter vários arrays soltos (um de nomes, um de
@@ -3530,7 +3530,7 @@ public class Produto implements Persistivel {
                 id, nome, categoria, quantidade, estoqueMinimo, precoUnitario, alerta);
     }
 }
-`,gu=`import java.time.LocalDateTime;
+`,bu=`import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 //cada movimentação é um registro histórico: depois de criada, ninguém edita nem apaga, só
@@ -3596,21 +3596,21 @@ public class Movimentacao implements Persistivel {
                 dataHora.format(FORMATO_DATA), produtoId, sinal, quantidade, observacao);
     }
 }
-`,_u=`//enum é melhor que usar String "entrada"/"saida" solta por aí: o compilador garante que só
+`,xu=`//enum é melhor que usar String "entrada"/"saida" solta por aí: o compilador garante que só
 //existem esses dois valores possíveis, sem risco de escrever "Entrada" com E maiúsculo num lugar
 //e "entrada" minúsculo em outro e o sistema não bater as strings na hora de comparar
 public enum TipoMovimentacao {
     ENTRADA,
     SAIDA
 }
-`,vu=`//interface simples: só define um jeito comum de virar linha de texto pra salvar em arquivo.
+`,Su=`//interface simples: só define um jeito comum de virar linha de texto pra salvar em arquivo.
 //tanto Produto quanto Movimentacao implementam isso, aí o GerenciadorEstoque consegue salvar
 //os dois com o mesmo método (salvarEmArquivo), sem precisar duplicar código de escrita de arquivo
 //pra cada tipo de dado diferente
 public interface Persistivel {
     String paraLinha();
 }
-`,yu=`//classe abstrata pros relatórios: define a "forma" que todo relatório tem (um método gerar())
+`,Cu=`//classe abstrata pros relatórios: define a "forma" que todo relatório tem (um método gerar())
 //mas quem implementa de verdade são as subclasses - cada relatório olha pro estoque de um jeito
 //diferente (uma filtra por estoque baixo, outra soma movimentações e ordena), mas o Main só
 //precisa saber chamar gerar() sem se importar com o que acontece por dentro de cada um
@@ -3624,7 +3624,7 @@ public abstract class Relatorio {
         System.out.println("=== " + texto + " ===");
     }
 }
-`,bu=`import java.util.List;
+`,wu=`import java.util.List;
 
 public class RelatorioEstoqueBaixo extends Relatorio {
     @Override
@@ -3642,7 +3642,7 @@ public class RelatorioEstoqueBaixo extends Relatorio {
         }
     }
 }
-`,xu=`import java.util.List;
+`,Tu=`import java.util.List;
 import java.util.Map;
 
 public class RelatorioMaisMovimentados extends Relatorio {
@@ -3664,7 +3664,7 @@ public class RelatorioMaisMovimentados extends Relatorio {
         }
     }
 }
-`,Su=`//exceção própria pra regra de negócio (estoque insuficiente, produto que não existe, etc).
+`,Eu=`//exceção própria pra regra de negócio (estoque insuficiente, produto que não existe, etc).
 //assim quem usa o GerenciadorEstoque sabe exatamente o motivo do erro em vez de receber um
 //RuntimeException genérico ou, pior, o programa quebrando sem explicação nenhuma
 public class EstoqueException extends Exception {
@@ -3672,7 +3672,7 @@ public class EstoqueException extends Exception {
         super(mensagem);
     }
 }
-`,Cu=`import java.io.BufferedReader;
+`,Du=`import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -3835,7 +3835,7 @@ public class GerenciadorEstoque {
         }
     }
 }
-`,wu=`import java.io.IOException;
+`,Ou=`import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -4029,4 +4029,5 @@ public class Main {
         return scanner.nextLine().trim();
     }
 }
-`,Tu=Object.assign({"../../python-src/biblioteca_web/biblioteca.py":ru,"../../python-src/biblioteca_web/main_web.py":iu,"../../python-src/biblioteca_web/modelos.py":au,"../../python-src/gerenciador_web.py":ou});function Eu(e){let t=Object.keys(Tu).find(t=>t.endsWith(e));if(!t)throw Error(`Arquivo python-src nao encontrado: ${e}`);return Tu[t]}var Du=`/Projetos_Interativos/wasm/`,Ou=[{id:`caixa`,nome:`Caixa Eletrônico (CYPRUS)`,linguagem:`C`,nivel:`Iniciante`,descricao:`Simulador de caixa eletrônico com distribuição de cédulas.`,tipo:`wasm`,scriptUrl:`${Du}caixa.js`,moduleName:`CaixaModule`,arquivos:[{filename:`Caixa_Cyprus.c`,code:su}],codeLanguage:`c`},{id:`calculadora`,nome:`Calculadora Dinâmica`,linguagem:`C`,nivel:`Intermediário`,descricao:`Calculadora científica + uni-funcional, com Fibonacci, PA e sistema de logs.`,tipo:`wasm`,scriptUrl:`${Du}calculadora.js`,moduleName:`CalculadoraModule`,arquivos:[{filename:`Calculadora_Dinamica.c`,code:cu}],codeLanguage:`c`},{id:`mercado`,nome:`Mercado - Cadastro`,linguagem:`C`,nivel:`Avançado`,descricao:`Cadastro de produtos e clientes com structs e memória dinâmica.`,tipo:`wasm`,scriptUrl:`${Du}mercado.js`,moduleName:`MercadoModule`,arquivos:[{filename:`main.c`,code:lu}],codeLanguage:`c`},{id:`tarefas`,nome:`Gerenciador de Tarefas`,linguagem:`Python`,nivel:`Iniciante`,descricao:`To-do list de linha de comando com persistência em JSON.`,tipo:`pyodide`,entryModule:`gerenciador_web`,sourceFiles:[{path:`gerenciador_web.py`,content:Eu(`python-src/gerenciador_web.py`)}],arquivos:[{filename:`gerenciador.py`,code:uu}],codeLanguage:`python`},{id:`biblioteca`,nome:`Sistema de Biblioteca`,linguagem:`Python`,nivel:`Avançado`,descricao:`Empréstimos de livros orientado a objetos, com regras de negócio.`,tipo:`pyodide`,entryModule:`main_web`,sourceFiles:[{path:`modelos.py`,content:Eu(`biblioteca_web/modelos.py`)},{path:`biblioteca.py`,content:Eu(`biblioteca_web/biblioteca.py`)},{path:`main_web.py`,content:Eu(`biblioteca_web/main_web.py`)}],arquivos:[{filename:`main.py`,code:du},{filename:`biblioteca.py`,code:fu},{filename:`modelos.py`,code:pu}],codeLanguage:`python`},{id:`calculadora-swing`,nome:`Calculadora (Swing)`,linguagem:`Java`,nivel:`Intermediário`,descricao:`Calculadora com interface gráfica em Java Swing.`,tipo:`codigo`,motivoSemExecucao:`Java não tem como rodar de verdade no navegador sem um serviço pago de terceiros — aqui dá pra ler o código.`,arquivos:[{filename:`Calculadora.java`,code:mu}],codeLanguage:`java`},{id:`sistema-estoque`,nome:`Sistema de Estoque`,linguagem:`Java`,nivel:`Avançado`,descricao:`Controle de estoque orientado a objetos: interfaces, classe abstrata e exceção customizada.`,tipo:`codigo`,motivoSemExecucao:`Java não tem como rodar de verdade no navegador sem um serviço pago de terceiros — aqui dá pra ler o código.`,arquivos:[{filename:`Main.java`,code:wu},{filename:`GerenciadorEstoque.java`,code:Cu},{filename:`Produto.java`,code:hu},{filename:`Movimentacao.java`,code:gu},{filename:`TipoMovimentacao.java`,code:_u},{filename:`Persistivel.java`,code:vu},{filename:`Relatorio.java`,code:yu},{filename:`RelatorioEstoqueBaixo.java`,code:bu},{filename:`RelatorioMaisMovimentados.java`,code:xu},{filename:`EstoqueException.java`,code:Su}],codeLanguage:`java`}],ku=[`C`,`Python`,`Java`];function Au({project:e}){let t=(0,v.useRef)(null),[n,r]=(0,v.useState)(`run`),i=Ql({scriptUrl:e.scriptUrl,moduleName:e.moduleName,terminalRef:t}),a=nu({sourceFiles:e.sourceFiles,entryModule:e.entryModule,terminalRef:t}),o=e.tipo===`wasm`?i:e.tipo===`pyodide`?a:null;return(0,W.jsxs)(`div`,{className:`project-runner`,children:[(0,W.jsxs)(`div`,{className:`project-header`,children:[(0,W.jsxs)(`div`,{children:[(0,W.jsx)(`h2`,{children:e.nome}),(0,W.jsx)(`p`,{className:`project-desc`,children:e.descricao})]}),(0,W.jsxs)(`div`,{className:`project-badges`,children:[(0,W.jsx)(`span`,{className:`badge lang-${e.linguagem.toLowerCase()}`,children:e.linguagem}),(0,W.jsx)(`span`,{className:`badge`,children:e.nivel})]})]}),o&&(0,W.jsxs)(`div`,{className:`view-tabs`,children:[(0,W.jsx)(`button`,{className:n===`run`?`active`:``,onClick:()=>r(`run`),children:`▶ Rodar`}),(0,W.jsxs)(`button`,{className:n===`code`?`active`:``,onClick:()=>r(`code`),children:[`</>`,` Código-fonte`]})]}),(!o||n===`run`)&&o&&(0,W.jsxs)(`div`,{className:`run-panel`,children:[(0,W.jsxs)(`div`,{className:`run-toolbar`,children:[(0,W.jsx)(`button`,{className:`btn-run`,onClick:o.run,disabled:o.status===`loading`||o.status===`running`,children:o.status===`loading`?`Carregando...`:o.status===`running`?`Rodando...`:o.status===`idle`?`Rodar`:`Rodar de novo`}),e.tipo===`pyodide`&&o.status===`idle`&&(0,W.jsx)(`span`,{className:`hint`,children:`primeira execução pode demorar alguns segundos (carrega o Python)`})]}),(0,W.jsx)(Is,{ref:t})]}),!o&&e.tipo===`codigo`&&(0,W.jsxs)(`div`,{className:`no-run-notice`,children:[`⚠️ `,e.motivoSemExecucao]}),(n===`code`||!o)&&(0,W.jsx)(Zl,{files:e.arquivos,language:e.codeLanguage})]})}function ju(){let[e,t]=(0,v.useState)(Ou[0].id),n=(0,v.useMemo)(()=>Ou.find(t=>t.id===e),[e]);return(0,W.jsxs)(`div`,{className:`app-shell`,children:[(0,W.jsxs)(`header`,{className:`topbar`,children:[(0,W.jsxs)(`a`,{href:`https://rafscorp.github.io`,className:`logo`,children:[`rafs`,(0,W.jsx)(`span`,{className:`accent`,children:`corp`}),` `,(0,W.jsx)(`span`,{className:`dim`,children:`/ projetos interativos`})]}),(0,W.jsxs)(`div`,{className:`topbar-links`,children:[(0,W.jsx)(`a`,{href:`https://github.com/rafscorp`,target:`_blank`,rel:`noopener`,className:`topbar-link`,children:`GitHub ↗`}),(0,W.jsx)(`a`,{href:`https://www.linkedin.com/in/adrian-rafael-28455a361`,target:`_blank`,rel:`noopener`,className:`topbar-link`,children:`LinkedIn ↗`})]})]}),(0,W.jsxs)(`div`,{className:`app-body`,children:[(0,W.jsx)(`nav`,{className:`sidebar`,children:ku.map(n=>(0,W.jsxs)(`div`,{className:`sidebar-group`,children:[(0,W.jsx)(`p`,{className:`sidebar-group-label`,children:n}),Ou.filter(e=>e.linguagem===n).map(n=>(0,W.jsx)(`button`,{className:`sidebar-item ${n.id===e?`active`:``}`,onClick:()=>t(n.id),children:n.nome},n.id))]},n))}),(0,W.jsx)(`main`,{className:`main-panel`,children:(0,W.jsx)(Au,{project:n},n.id)})]})]})}(0,y.createRoot)(document.getElementById(`root`)).render((0,W.jsx)(v.StrictMode,{children:(0,W.jsx)(ju,{})}));
+`,ku=Object.assign({"../../python-src/biblioteca_web/biblioteca.py":su,"../../python-src/biblioteca_web/main_web.py":cu,"../../python-src/biblioteca_web/modelos.py":lu,"../../python-src/gerenciador_web.py":uu});function Au(e){let t=Object.keys(ku).find(t=>t.endsWith(e));if(!t)throw Error(`Arquivo python-src nao encontrado: ${e}`);return ku[t]}var ju=`/Projetos_Interativos/wasm/`,Mu=[{id:`caixa`,nome:`Caixa Eletrônico (CYPRUS)`,linguagem:`C`,nivel:`Iniciante`,descricao:`Simulador de caixa eletrônico com distribuição de cédulas.`,tipo:`wasm`,scriptUrl:`${ju}caixa.js`,moduleName:`CaixaModule`,arquivos:[{filename:`Caixa_Cyprus.c`,code:du}],codeLanguage:`c`},{id:`calculadora`,nome:`Calculadora Dinâmica`,linguagem:`C`,nivel:`Intermediário`,descricao:`Calculadora científica + uni-funcional, com Fibonacci, PA e sistema de logs.`,tipo:`wasm`,scriptUrl:`${ju}calculadora.js`,moduleName:`CalculadoraModule`,arquivos:[{filename:`Calculadora_Dinamica.c`,code:fu}],codeLanguage:`c`},{id:`mercado`,nome:`Mercado - Cadastro`,linguagem:`C`,nivel:`Avançado`,descricao:`Cadastro de produtos e clientes com structs e memória dinâmica.`,tipo:`wasm`,scriptUrl:`${ju}mercado.js`,moduleName:`MercadoModule`,arquivos:[{filename:`main.c`,code:pu}],codeLanguage:`c`},{id:`tarefas`,nome:`Gerenciador de Tarefas`,linguagem:`Python`,nivel:`Iniciante`,descricao:`To-do list de linha de comando com persistência em JSON.`,tipo:`pyodide`,entryModule:`gerenciador_web`,sourceFiles:[{path:`gerenciador_web.py`,content:Au(`python-src/gerenciador_web.py`)}],arquivos:[{filename:`gerenciador.py`,code:mu}],codeLanguage:`python`},{id:`biblioteca`,nome:`Sistema de Biblioteca`,linguagem:`Python`,nivel:`Avançado`,descricao:`Empréstimos de livros orientado a objetos, com regras de negócio.`,tipo:`pyodide`,entryModule:`main_web`,sourceFiles:[{path:`modelos.py`,content:Au(`biblioteca_web/modelos.py`)},{path:`biblioteca.py`,content:Au(`biblioteca_web/biblioteca.py`)},{path:`main_web.py`,content:Au(`biblioteca_web/main_web.py`)}],arquivos:[{filename:`main.py`,code:hu},{filename:`biblioteca.py`,code:gu},{filename:`modelos.py`,code:_u}],codeLanguage:`python`},{id:`calculadora-swing`,nome:`Calculadora (Swing)`,linguagem:`Java`,nivel:`Intermediário`,descricao:`Calculadora com interface gráfica em Java Swing.`,tipo:`cheerpj`,jarPath:`java/Calculadora.jar`,arquivos:[{filename:`Calculadora.java`,code:vu}],codeLanguage:`java`},{id:`sistema-estoque`,nome:`Sistema de Estoque`,linguagem:`Java`,nivel:`Avançado`,descricao:`Controle de estoque orientado a objetos: interfaces, classe abstrata e exceção customizada.`,tipo:`cheerpj`,jarPath:`java/SistemaEstoque.jar`,isConsoleApp:!0,arquivos:[{filename:`Main.java`,code:Ou},{filename:`GerenciadorEstoque.java`,code:Du},{filename:`Produto.java`,code:yu},{filename:`Movimentacao.java`,code:bu},{filename:`TipoMovimentacao.java`,code:xu},{filename:`Persistivel.java`,code:Su},{filename:`Relatorio.java`,code:Cu},{filename:`RelatorioEstoqueBaixo.java`,code:wu},{filename:`RelatorioMaisMovimentados.java`,code:Tu},{filename:`EstoqueException.java`,code:Eu}],codeLanguage:`java`}],Nu=[`C`,`Python`,`Java`];function Pu({status:e}){return e===`loading`?`Carregando...`:e===`running`?`Rodando...`:e===`idle`?`Rodar`:`Rodar de novo`}function Fu({project:e}){let t=(0,v.useRef)(null),n=(0,v.useRef)(null),[r,i]=(0,v.useState)(`run`),a=Ql({scriptUrl:e.scriptUrl,moduleName:e.moduleName,terminalRef:t}),o=nu({sourceFiles:e.sourceFiles,entryModule:e.entryModule,terminalRef:t}),s=ou({jarPath:e.jarPath,displayRef:n,isConsoleApp:e.isConsoleApp}),c=e.tipo===`wasm`?a:e.tipo===`pyodide`?o:e.tipo===`cheerpj`?s:null,l=e.tipo===`wasm`||e.tipo===`pyodide`,u=e.tipo===`cheerpj`;return(0,W.jsxs)(`div`,{className:`project-runner`,children:[(0,W.jsxs)(`div`,{className:`project-header`,children:[(0,W.jsxs)(`div`,{children:[(0,W.jsx)(`h2`,{children:e.nome}),(0,W.jsx)(`p`,{className:`project-desc`,children:e.descricao})]}),(0,W.jsxs)(`div`,{className:`project-badges`,children:[(0,W.jsx)(`span`,{className:`badge lang-${e.linguagem.toLowerCase()}`,children:e.linguagem}),(0,W.jsx)(`span`,{className:`badge`,children:e.nivel})]})]}),c&&(0,W.jsxs)(`div`,{className:`view-tabs`,children:[(0,W.jsx)(`button`,{className:r===`run`?`active`:``,onClick:()=>i(`run`),children:`▶ Rodar`}),(0,W.jsxs)(`button`,{className:r===`code`?`active`:``,onClick:()=>i(`code`),children:[`</>`,` Código-fonte`]})]}),c&&r===`run`&&(0,W.jsxs)(`div`,{className:`run-panel`,children:[(0,W.jsxs)(`div`,{className:`run-toolbar`,children:[(0,W.jsx)(`button`,{className:`btn-run`,onClick:c.run,disabled:c.status===`loading`||c.status===`running`,children:(0,W.jsx)(Pu,{status:c.status})}),e.tipo===`pyodide`&&c.status===`idle`&&(0,W.jsx)(`span`,{className:`hint`,children:`primeira execução pode demorar alguns segundos (carrega o Python)`}),u&&(c.status===`idle`||c.status===`loading`)&&(0,W.jsx)(`span`,{className:`hint`,children:`primeira execução pode demorar (carrega uma JVM completa via WebAssembly)`})]}),l&&(0,W.jsx)(Is,{ref:t}),u&&!e.isConsoleApp&&(0,W.jsx)(`div`,{ref:n,className:`cheerpj-display`}),u&&e.isConsoleApp&&(0,W.jsxs)(`div`,{className:`cheerpj-console`,children:[(0,W.jsx)(`pre`,{className:`cheerpj-console-log`,children:s.consoleLines.join(`
+`)||(c.status===`running`?`aguardando saída do programa...`:``)}),c.status===`running`&&(0,W.jsxs)(`p`,{className:`cheerpj-console-note`,children:[`⚠️ Esse programa usa `,(0,W.jsx)(`code`,{children:`Scanner`}),` pra menu interativo — a saída acima é real (rodando de verdade numa JVM no navegador), mas ainda não consegui conectar a entrada de teclado nessa versão web pra esse app específico de console. A Calculadora (Swing) já é 100% interativa; pra ver esse aqui funcionando com entrada, dá pra compilar e rodar localmente (instruções no código-fonte).`]})]}),u&&(0,W.jsxs)(`p`,{className:`cheerpj-credit`,children:[`rodando com `,(0,W.jsx)(`a`,{href:`https://cheerpj.com`,target:`_blank`,rel:`noopener`,children:`CheerpJ`}),` — JVM completa compilada pra WebAssembly`]})]}),(r===`code`||!c)&&(0,W.jsx)(Zl,{files:e.arquivos,language:e.codeLanguage})]})}function Iu(){let[e,t]=(0,v.useState)(Mu[0].id),n=(0,v.useMemo)(()=>Mu.find(t=>t.id===e),[e]);return(0,W.jsxs)(`div`,{className:`app-shell`,children:[(0,W.jsxs)(`header`,{className:`topbar`,children:[(0,W.jsxs)(`a`,{href:`https://rafscorp.github.io`,className:`logo`,children:[`rafs`,(0,W.jsx)(`span`,{className:`accent`,children:`corp`}),` `,(0,W.jsx)(`span`,{className:`dim`,children:`/ projetos interativos`})]}),(0,W.jsxs)(`div`,{className:`topbar-links`,children:[(0,W.jsx)(`a`,{href:`https://github.com/rafscorp`,target:`_blank`,rel:`noopener`,className:`topbar-link`,children:`GitHub ↗`}),(0,W.jsx)(`a`,{href:`https://www.linkedin.com/in/adrian-rafael-28455a361`,target:`_blank`,rel:`noopener`,className:`topbar-link`,children:`LinkedIn ↗`})]})]}),(0,W.jsxs)(`div`,{className:`app-body`,children:[(0,W.jsx)(`nav`,{className:`sidebar`,children:Nu.map(n=>(0,W.jsxs)(`div`,{className:`sidebar-group`,children:[(0,W.jsx)(`p`,{className:`sidebar-group-label`,children:n}),Mu.filter(e=>e.linguagem===n).map(n=>(0,W.jsx)(`button`,{className:`sidebar-item ${n.id===e?`active`:``}`,onClick:()=>t(n.id),children:n.nome},n.id))]},n))}),(0,W.jsx)(`main`,{className:`main-panel`,children:(0,W.jsx)(Fu,{project:n},n.id)})]})]})}(0,y.createRoot)(document.getElementById(`root`)).render((0,W.jsx)(v.StrictMode,{children:(0,W.jsx)(Iu,{})}));
