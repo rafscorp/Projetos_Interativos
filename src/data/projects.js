@@ -35,6 +35,12 @@ function pyFile(path) {
   return pythonWebFiles[key]
 }
 
+// import.meta.env.BASE_URL reflete o "base" configurado no vite.config.js
+// (aqui, "/Projetos_Interativos/"). Sem isso, um caminho fixo tipo
+// "/wasm/caixa.js" ia procurar na raiz do dominio (rafscorp.github.io/wasm/...)
+// em vez de dentro da pasta certa (rafscorp.github.io/Projetos_Interativos/wasm/...)
+const WASM_BASE = `${import.meta.env.BASE_URL}wasm/`
+
 export const projects = [
   {
     id: 'caixa',
@@ -43,7 +49,7 @@ export const projects = [
     nivel: 'Iniciante',
     descricao: 'Simulador de caixa eletrônico com distribuição de cédulas.',
     tipo: 'wasm',
-    scriptUrl: '/wasm/caixa.js',
+    scriptUrl: `${WASM_BASE}caixa.js`,
     moduleName: 'CaixaModule',
     arquivos: [{ filename: 'Caixa_Cyprus.c', code: caixaSrc }],
     codeLanguage: 'c',
@@ -55,7 +61,7 @@ export const projects = [
     nivel: 'Intermediário',
     descricao: 'Calculadora científica + uni-funcional, com Fibonacci, PA e sistema de logs.',
     tipo: 'wasm',
-    scriptUrl: '/wasm/calculadora.js',
+    scriptUrl: `${WASM_BASE}calculadora.js`,
     moduleName: 'CalculadoraModule',
     arquivos: [{ filename: 'Calculadora_Dinamica.c', code: calculadoraSrc }],
     codeLanguage: 'c',
@@ -67,7 +73,7 @@ export const projects = [
     nivel: 'Avançado',
     descricao: 'Cadastro de produtos e clientes com structs e memória dinâmica.',
     tipo: 'wasm',
-    scriptUrl: '/wasm/mercado.js',
+    scriptUrl: `${WASM_BASE}mercado.js`,
     moduleName: 'MercadoModule',
     arquivos: [{ filename: 'main.c', code: mercadoSrc }],
     codeLanguage: 'c',
