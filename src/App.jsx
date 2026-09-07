@@ -92,9 +92,14 @@ export default function App() {
         <a href="https://rafscorp.github.io" className="logo">
           rafs<span className="accent">corp</span> <span className="dim">/ projetos interativos</span>
         </a>
-        <a href="https://github.com/rafscorp" target="_blank" rel="noopener" className="topbar-link">
-          GitHub ↗
-        </a>
+        <div className="topbar-links">
+          <a href="https://github.com/rafscorp" target="_blank" rel="noopener" className="topbar-link">
+            GitHub ↗
+          </a>
+          <a href="https://www.linkedin.com/in/adrian-rafael-28455a361" target="_blank" rel="noopener" className="topbar-link">
+            LinkedIn ↗
+          </a>
+        </div>
       </header>
 
       <div className="app-body">

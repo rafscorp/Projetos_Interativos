@@ -46,6 +46,8 @@ body {
 .logo .accent { color: var(--accent); }
 .logo .dim { color: var(--text-dim); font-weight: 400; }
 
+.topbar-links { display: flex; gap: 1.25rem; }
+
 .topbar-link {
   color: var(--text-dim);
   text-decoration: none;
