@@ -73,12 +73,7 @@ function ProjectRunner({ project }) {
             <button className="btn-run" onClick={engine.run} disabled={engine.status === 'loading' || engine.status === 'running'}>
               <RunButtonLabel status={engine.status} />
             </button>
-            {project.tipo === 'pyodide' && engine.status === 'idle' && (
-              <span className="hint">primeira execução pode demorar alguns segundos (carrega o Python)</span>
-            )}
-            {usaCheerpj && (engine.status === 'idle' || engine.status === 'loading') && (
-              <span className="hint">primeira execução pode demorar (carrega uma JVM completa via WebAssembly)</span>
-            )}
+            <span className="hint">{project.ferramenta}</span>
           </div>
 
           {usaTerminal && <Terminal ref={terminalRef} />}
@@ -88,14 +83,11 @@ function ProjectRunner({ project }) {
           {usaCheerpj && project.isConsoleApp && (
             <div className="cheerpj-console">
               <pre className="cheerpj-console-log">
-                {cheerpjProgram.consoleLines.join('\n') || (engine.status === 'running' ? 'aguardando saída do programa...' : '')}
+                {cheerpjProgram.consoleLines.join('\n') || (engine.status === 'running' ? 'carregando...' : '')}
               </pre>
               {engine.status === 'running' && (
                 <p className="cheerpj-console-note">
-                  ⚠️ Esse programa usa <code>Scanner</code> pra menu interativo — a saída acima é real (rodando de verdade
-                  numa JVM no navegador), mas ainda não consegui conectar a entrada de teclado nessa versão web pra esse
-                  app específico de console. A Calculadora (Swing) já é 100% interativa; pra ver esse aqui funcionando
-                  com entrada, dá pra compilar e rodar localmente (instruções no código-fonte).
+                  ⚠️ input do Scanner não tá funcionando aqui ainda — o resto roda de verdade
                 </p>
               )}
             </div>
@@ -103,7 +95,7 @@ function ProjectRunner({ project }) {
 
           {usaCheerpj && (
             <p className="cheerpj-credit">
-              rodando com <a href="https://cheerpj.com" target="_blank" rel="noopener">CheerpJ</a> — JVM completa compilada pra WebAssembly
+              rodando com <a href="https://cheerpj.com" target="_blank" rel="noopener">CheerpJ</a>
             </p>
           )}
         </div>
