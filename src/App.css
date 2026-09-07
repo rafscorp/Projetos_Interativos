@@ -268,11 +268,15 @@ body {
 }
 
 /* ================== MOBILE ================== */
+/* fonte de tudo bem menor aqui de proposito - a ideia e caber o conteudo
+   (principalmente linhas fixas do terminal e do codigo) sem quebrar
+   feio numa tela estreita, mesmo que a letra fique pequena */
 @media (max-width: 768px) {
-  .topbar { padding: 0.75rem 1rem; }
-  .logo { font-size: 0.82rem; }
+  .topbar { padding: 0.6rem 0.75rem; }
+  .logo { font-size: 0.72rem; }
   .logo .dim { display: none; } /* "/ projetos interativos" some, o titulo da aba ja diz isso */
-  .topbar-link { font-size: 0.8rem; }
+  .topbar-links { gap: 0.75rem; }
+  .topbar-link { font-size: 0.68rem; }
 
   /* sidebar vira uma faixa horizontal rolavel em vez de coluna fixa -
      numa tela estreita, uma coluna de 240px sozinha ja tomava quase
@@ -285,42 +289,58 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.4rem;
     overflow-x: auto;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
     -webkit-overflow-scrolling: touch;
   }
   .sidebar-group {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.3rem;
     margin-bottom: 0;
     flex-shrink: 0;
   }
-  .sidebar-group-label { padding: 0; margin-bottom: 0; }
+  .sidebar-group-label { padding: 0; margin-bottom: 0; font-size: 0.65rem; }
   .sidebar-item {
     width: auto;
     white-space: nowrap;
-    padding: 0.45rem 0.8rem;
+    padding: 0.35rem 0.6rem;
     margin-bottom: 0;
+    font-size: 0.72rem;
   }
 
-  .main-panel { padding: 1rem 1rem 1.5rem; }
+  .main-panel { padding: 0.75rem 0.75rem 1.25rem; }
 
-  .project-header { flex-direction: column; }
-  .project-header h2 { font-size: 1.2rem; }
+  .project-header { flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .project-header h2 { font-size: 1rem; }
+  .project-desc { font-size: 0.78rem; }
   .project-badges { flex-wrap: wrap; }
+  .badge { font-size: 0.65rem; padding: 0.25rem 0.5rem; }
 
-  .view-tabs button { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
+  .view-tabs { gap: 0.4rem; margin-bottom: 0.75rem; }
+  .view-tabs button { padding: 0.4rem 0.7rem; font-size: 0.72rem; }
 
-  .run-toolbar { flex-wrap: wrap; gap: 0.6rem; }
-  .btn-run { width: 100%; text-align: center; }
-  .hint { font-size: 0.78rem; }
+  .run-toolbar { flex-wrap: wrap; gap: 0.5rem; }
+  .btn-run { width: 100%; text-align: center; font-size: 0.8rem; padding: 0.6rem 1rem; }
+  .hint { font-size: 0.68rem; }
 
-  .terminal-container { height: 380px; padding: 6px; }
-  .cheerpj-display { height: 420px; }
-  .cheerpj-console { height: 420px; }
+  .terminal-container { height: 340px; padding: 4px; }
+  .cheerpj-display { height: 380px; }
+  .cheerpj-console { height: 380px; }
+  .cheerpj-console-log { font-size: 0.68rem; padding: 8px; }
+  .cheerpj-console-note { font-size: 0.68rem; padding: 0.6rem 0.7rem; }
+  .cheerpj-credit { font-size: 0.66rem; }
 
-  .code-tab { font-size: 0.72rem; padding: 0.45rem 0.6rem; }
-  .code-scroll { max-height: 420px; }
+  .code-tab { font-size: 0.65rem; padding: 0.4rem 0.55rem; }
+  .code-scroll { max-height: 360px; }
+  /* o syntax highlighter define font-size inline (via prop customStyle),
+     entao só CSS normal não sobrescreve - precisa do !important aqui */
+  .code-scroll pre, .code-scroll code { font-size: 0.68rem !important; }
+}
+
+@media (max-width: 400px) {
+  .terminal-container { height: 300px; }
+  .cheerpj-display { height: 320px; }
+  .cheerpj-console { height: 320px; }
 }

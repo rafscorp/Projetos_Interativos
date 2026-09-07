@@ -15,10 +15,15 @@ const Terminal = forwardRef(function Terminal({ onReady }, ref) {
   const pendingResolveRef = useRef(null)
 
   useEffect(() => {
+    // fonte menor em tela estreita, senao as linhas do programa (que usam
+    // largura fixa de caracteres, tipo as bordas "----") quebram e saem
+    // toda desalinhadas num celular
+    const fontSize = window.innerWidth <= 480 ? 10 : window.innerWidth <= 768 ? 11 : 14
+
     const term = new XTerm({
       convertEol: true,
       fontFamily: "'JetBrains Mono', monospace",
-      fontSize: 14,
+      fontSize,
       theme: {
         background: '#0a0e0f',
         foreground: '#e7f1ee',
