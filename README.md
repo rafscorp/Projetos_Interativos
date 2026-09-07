@@ -1,5 +1,11 @@
 # 🧪 Projetos Interativos — Rafael Costa
 
+![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white)
+![Emscripten](https://img.shields.io/badge/Emscripten-C%2FC++_→_WASM-e8a33d?style=flat-square)
+![Pyodide](https://img.shields.io/badge/Pyodide-Python_no_navegador-3776AB?style=flat-square&logo=python&logoColor=white)
+![CheerpJ](https://img.shields.io/badge/CheerpJ-Java_no_navegador-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+[![Rodar ao vivo](https://img.shields.io/badge/▶_rodar_ao_vivo-no_navegador-35e3a3?style=flat-square)](https://rafscorp.github.io/Projetos_Interativos/)
+
 Uma central onde dá pra **rodar de verdade** (ou pelo menos ler com carinho) os projetos dos outros repositórios, direto no navegador — sem instalar nada.
 
 🔗 **[Ver ao vivo](https://rafscorp.github.io/Projetos_Interativos/)**
